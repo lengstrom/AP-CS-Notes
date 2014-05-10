@@ -1,0 +1,146 @@
+//Java is made up of a heriarchy of packages, subpackages, and classes (and other files) located within them
+//Don't *need* to know about this for the AP CS exam
+// Importing all packages in a package
+import packageName.*;
+
+// Import single class from package
+import packageName.Class;
+
+//Typical .java (java class) source file
+
+//FirstProg.java
+import package1.*;
+import package2.subpackage.ClassName;
+
+public class FirstProg  {  //note that the file name is FirstProg.java
+    public static type1 method1( parameter list)  {
+       <code for method1>
+    }
+    public static type2 method2(parameter list)  {
+       <code for method2>
+    }
+       . . . 
+    Public static void main( String[] args )  {
+       <your code>
+    }
+}
+
+// Primitive types in java
+int // Range: [-2^(31), 2^(31)] aka [Integer.MIN_VALUE, Integer.MAX_VALUE]
+// Integer types are stored exactly
+// Too large, and you get an "overflow error" - no explicit error, just wrong result in execution
+boolean // t/f
+double  // double precision floating point number
+
+// Can cast to eachother easily
+// Casting doubles to ints truncates the number (ie, 1.9999 -> 1)
+// Casting goes in order of operations as well
+
+// Number storage
+// Integers use 8 bits. One indicates the sign.
+// Doubles (Floating point numbers): sign * mantissa * 2^(exponent)
+	// 2 = radix
+	// 11 bits for exponent
+	// 52 bits for mantissa (indicates digits of number)
+
+//You should know how to convert hexidecimal (Base 16, 0 = 0, F = 15), binary (Base 2), and octal (Base 8)
+
+// final variables
+// User defined constant that does not change
+final double TAX_RATE = .42;
+
+// Capitalized
+// Can be given a value only once - doesn't have to be on initialization though
+
+// Operators
+// Arithmetic Operators:
+// Only (slightly) tricky one is modulus:
+	// number % base - returns remainder
+
+// Comparison Operators
+// Obvious for the most part... 
+	// >= - greater than or equal to
+	// <= - less than or equal to
+	// != - not equal to
+// Will return a boolean value
+
+// Logical operators
+// ! = NOT
+// && = AND
+// || = OR
+
+// Assignment operators
+// operator and a = will perform operation on the variable with a parameter defined by the right side
+// ie i += 1 will output whatever (i + 1) is
+
+// Operator precedence
+// !, ++, --
+// *, /, %
+// +, -
+// rest is pretty obvious
+
+// Input:
+// Either will be text explaining what is happening OR 
+// Could be IO.read__ (ie IO.readInt())
+// Not explicitly tested on AP CS exam
+
+// Output
+//Limited to the following methods
+System.out.print	//prints to console
+System.out.println	//prints to console with a newline directly after printed string
+// Note that...
+// 		boolean expressions print either "true" or "false"
+// 		numbers are automatically converted to strings
+
+// Concatenation
+// Use + operator to concatenate strings and numbers
+
+// Escape sequences
+// \n = newline
+// \" = quote
+// \\ = backslash
+
+
+// Control structures
+//Ifs
+if (boolean expression is true) {
+	// do stuff
+}
+else if (another boolean expression) {
+	// do other stuff
+}
+else {
+	// do other stuff
+}
+
+//Note: one line if statements don't need {}s
+
+//Iteration
+for (i = 0; i < number; i++) { //initialization; termination condition; update statement
+	//do stuff
+}
+//Note: Termination condition is tested at the top of the loop; update statement is performed at the bottom
+
+//For-in aka For-each aka fast enumeration
+for (SomeType element : collection) { // For every element of type SomeType in collection
+	// do stuff
+}
+
+//Note: Can't delete / swap / change positions of objects in the collection from within the for-in loop
+
+// While loop
+while (boolean expression) {
+	//do stuff
+}
+
+// Errors and execptions
+// Exception = error condition that occurs during hte execution of a java program
+// Unchecked eception: When you don't provide code to deal with errors. These stop execution of the program.
+// Checked exception: PRovide code to handle it, doesn't necessarily terminate program
+// EXCEPTIONS YOU NEED TO KNOW FOR THE AP EXAM:
+	// ArithmeticException: Error that happens during arithmetic. i.e., dividing by 0.
+	// NullPointerException (99)
+	// ClassCastException (137)
+	// ArrayIndexOutOfBoundsException (230)
+	// IndexOutOfBoundsException (241)
+	// IllegalArgumentException: Thrown when arguments do not satisfy the method's preconditions (ie, send a string to somewhere that should be a double)

@@ -1,0 +1,1 @@
+These notes are a summary of Barron's "AP Computer Science A" book, meant for students that already know how to program, and would like to take the AP CS test, but not have to wade through a book meant for beginners. 

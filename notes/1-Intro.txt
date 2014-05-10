@@ -26,12 +26,13 @@ public class FirstProg  {  //note that the file name is FirstProg.java
 }
 
 // Primitive types in java
-int // Range: [-2^(31), 2^(31)] aka [Integer.MIN_VALUE, Integer.MAX_VALUE]
+int // Range: [-2^(31), 2^(31) - 1] aka [Integer.MIN_VALUE, Integer.MAX_VALUE]
 // Integer types are stored exactly
 // Too large, and you get an "overflow error" - no explicit error, just wrong result in execution
 boolean // t/f
 double  // double precision floating point number
 
+// Setting integers as doubles causes a compiler error
 // Can cast to eachother easily
 // Casting doubles to ints truncates the number (ie, 1.9999 -> 1)
 // Casting goes in order of operations as well
@@ -78,6 +79,7 @@ final double TAX_RATE = .42;
 // *, /, %
 // +, -
 // rest is pretty obvious
+//REMEMBER THAT INTEGERS OPERATED ON BY INTEGERS WILL NEVER RETURN A FLOATING POINT VALUE
 
 // Input:
 // Either will be text explaining what is happening OR 
@@ -143,4 +145,4 @@ while (boolean expression) {
 	// ClassCastException (137)
 	// ArrayIndexOutOfBoundsException (230)
 	// IndexOutOfBoundsException (241)
-	// IllegalArgumentException: Thrown when arguments do not satisfy the method's preconditions (ie, send a string to somewhere that should be a double)
+		// IllegalArgumentException: Thrown when arguments do not satisfy the method's preconditions (ie, send a string to somewhere that should be a double)

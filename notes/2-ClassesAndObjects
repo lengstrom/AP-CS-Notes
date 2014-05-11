@@ -67,6 +67,7 @@ Class declarations:
 		-Accessors - return variables within a class
 		-Mutators - change variables within a class
 		-Static methods vs instance methods
+			-Static methods cannot be overriden (see later on)
 			-Static methods perform operations for entire classes - effectively, they act as a namespace
 			-Static methods cannot invoke instane variables or instance methods (compiler will catch)
 	-Overloading: multiple methods with the same name

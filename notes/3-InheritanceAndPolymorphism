@@ -1,0 +1,207 @@
+// Inheritence = relationship between objects that share characteristics
+// Subclasses are created from superclasses
+// 		You can override methods for super classes in subclasses
+// 		You can only override methods that are public
+// Example
+
+public class SuperClass {
+	// private ivars
+	// other data members
+	// constructors
+	// public methods
+	// private methods
+}
+
+public class SubClass extends SuperClass {
+	// additional private ivars
+	// additional other data members
+	// constructors
+	// additional public methods
+	// overriden public methods
+	// additional private methods
+}
+
+// Note that constructors are not inherited
+// To reference an object's superclass, use the keyword `super`.
+// 		Use super(<params>) to call the superclass' constructor
+// 			This must be done in the first line of the constructor if it is done at all.
+//			If no constructor is provided then Java will automatically do the following:
+
+public SubClass() {
+	super();
+}
+
+// The subclass cannot access private variables
+//		It can, however, access "mutator" and "accessor" methods
+// Subclass can access but cannot override private methods
+// 		Just declare a method with the same name / signature
+// 		Partial overriding: call super.methodName() in the "overrider"
+
+// You can declare references as superclasses when creating references to subclasses
+// for example, these two both work:
+
+Student s = new Student();
+Student g = new GradStudent();
+// Calling methods unique to the subclass after having declared the reference to be a superclass does not work
+// However you can still call all of the superclass methods.
+
+// POLYMORPHISM
+// What happens when you call methods that have been overriden in a subclass after you just declared the reference to be of the superclass' type?
+// Polymorphism:  Method calls are always determined by the type o the actual object, not the type of the object reference.
+	//A method that has been overridden in at least one subclass is said to be polymorphic
+// Static binding: occurs at compile time, compiler chooses which method is going to be run for overloaded method based on the signature of the method calle
+// Dynamic binding: java chooses which method to run during runtime - occurs for overriden methods. Determined by the object not the reference's type.
+
+// Type compatability
+// Downcasting:
+// 		At compile time, only nonprivate methods of a superclass can appear to the right of the dot operator when applied to a subclass.
+// 		Thus, you have to type the object. For example:
+
+Student s = new GradStudent();
+GradStudent g = new GradStudent();
+
+//Assume getID() is a method unique to the GradStudent class
+int x = s.getID(); //Compile time error
+int y = g.getID(); //works
+
+// However, this...
+int x = ((GradStudent) s).getID(); //works. Note the parens are necessary to get through the order of operations.
+
+// To sum it up...
+// Example code for the next few assertions...
+SuperClass foo = new SubClass();
+// Type of an object at compile time is that of the reference, while the type of an object at run time is the actual object
+// Therefore, at compile time, a method has to be found in the SuperClass for the program to be compiled - otherwise, it needs to be casted
+// For a polymorphic method (a method overriden by a Subclass') the method is chosen at run-time.
+// Types of the parameters are checked at compile time - thus, you might need to cast the object to the subclass.
+
+// Abstract classes
+// Superclass that represents an abstract concept - should not be instantiated on its own
+// 		Used as a superclass for other objects (ie, (abstract) shape -> (subclasses of shape) circle / rectangle)
+// Contain methods, variables, etc
+// Cannot include static methods / variables in an abstract class
+// Abstract methods:
+// 		Do not include a method declaration
+// 		MUST be defined by subclasses
+// 		If you do not define every abstract method then you will have a compile time error - you must explicitly say that it is an abstract class if you do this
+// Example: Abstract class with nonabstract subclass
+
+public abstract class Shape {
+	private String name;
+
+	public Shape(String name) {
+		this.name = name;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public abstract double area();
+	public abstract double permimeter();
+
+	public double semiPerimeter() {
+		return perimeter() / 2;
+	}
+}
+
+public class Circle extends Shape {
+	public double radius;
+
+	public Circle(double radius, double name) {
+		super();
+
+		this.name = name;
+		this.radius = radius;
+	}
+
+	public double area() {
+		return radius * radius * 3.14159;
+	}
+
+	public double perimeter() {
+		return radius * 2 * 3.14159;
+	}
+}
+
+// Note that `super` refers to the same instance - a subset of the overall instance
+// Abstract classes can have both instance variables and normal methods (referred to as "concrete")
+// Abstract classes do not need constructors
+
+
+// INTERFACES
+// Collections of related methods whose headers are provided without implementations
+//		All methods are both public and abstract
+// Classes that `implement` an interface MUST define every single method.
+// 		If a class does not define every single method, then it must be labelled as abstract
+
+// Example interface:
+
+public interface FlyingObject {
+	void fly();
+	boolean isFlying();
+}
+
+// usage
+
+public class Pterodactyl extends Dinosaur implements FlyingObject {
+	// implements stuff
+}
+
+// You can only have one subclass, but you can have as many interfaces as you want:
+
+public class Pterodactyl extends Dinosaur implements FlyingObject, ColdBloodedOrganism, FrenchSpeaking {
+	// implements stuff
+}
+
+// Comparable interface
+
+// AP Java subset includes the `comparable` subset
+
+public interface Comparable {
+	int compareTo(Object obj);
+}
+
+// Any class that implements this must provide a compareTo method that either returns -1 (if the object is less than the compared object),
+// 0 (if the two objects are the same), or 1 (if the object is greate rthan the compared object)
+// compares `this` with parameter object `obj`
+// If the two objects being compared are not type compatible, a ClassCastException is thrown by the method
+// Example of implementation
+
+public abstract class Shape implements Comparable {	
+	public compareTo(Object c) {
+		final double EPSILON = 1.0e-15;
+
+		Shape rhs = (Shape) obj;
+
+		double diff = area() - rhs.area();
+		if (Math.abs(diff) <= EPSILON * Math.abs(area())) {
+			return 0
+		}
+		else if (diff < 0) {
+			return -1;
+		}
+		else {
+			return 1;
+		}
+	}
+}
+
+// Note the robustness of the test for equality here, due to the natural floating point round off that occurs.
+// The Object class is the class that every class inherits from 
+// Remember to cast objects to the object type that you're trying to compare with
+// Remember to do 0 (obj is the same as the one that you're comparing with), -1 (obj is less than one you're comparing with), 1 (obj is more than the one you're comparing with) etc
+
+// Interface vs Abstract Class
+// Use an abstract class for an object that is application specific but incomplete without its subclasses
+// Use an interface when it could be applicable to a lot of programs
+// Interface cannot provide implementations for anything, while abstract classes can
+// Interface cannot contain ivars, but abstract classes can.
+// Both interfaces and abstact classes can declare constants 
+
+interface OlympicMedal {
+	static final String GOLD = "Gold";
+	static final String SILVER = "Silver";
+	static final String BRONZE = "Bronze";
+}
+// Neither abstract nor interfaces can have instances made of themselves alone

@@ -1,0 +1,101 @@
+/*
+Objects
+-Instance of a object is called an object reference (pointer to the memory for the instance)
+-ivars maintain the *state* of an object
+-methods define the object's behavior
+Combining state and behavior in a class is encapsulation
+	-encapsulation is also the ability to hide / show state / behavior at one's discretion
+*/
+//Example of class declaration
+public class BankAccount {
+	private String myPassword;
+	private double myBalance;
+	public static final doublue OVERDRAW_PENALTY = 20.00;
+
+	public BankAccount() {
+		myPassword = "";
+		myBalance = 0.0;
+	}
+
+	public BankAccount(String pw, double initBal) {
+		//constructor
+		myPassword = pw;
+		myBalance = initBal;
+	}
+
+	public static void changeInterestRate(double newRate) {
+		//code
+	}
+
+	public void payInterest() {
+		//code
+	}
+
+	public boolean withdraw(double amt) {
+		//code
+	}
+}
+
+/*
+Public/Private/Static
+===========
+Class declarations:
+	-If class is public, then it can only be used by classes in its own package
+	-In AP CS, all classes are public
+	-Restriction of access to classes, ivars, and methods = *information hiding*
+
+-Methods
+	-Public methods are accessable to any class
+	-Declaring them:
+		<access specifier> <return type> <method name> (<parameter1>, <parameter2>)
+		ie:*/
+		public void widthDraw(String password, double amount)
+/*
+	-Access specifier -> Which methods can call method
+		-Private = only self
+		-Public = any class
+		-Static = 
+	-Types of methods
+		-Constructors:
+			-Creates the object of the class
+			-Can have multiple constructors to provide different ways of initializing a class
+			-Number of and type of arguments passed on the initialization of the object dictate which one is called
+				*/
+					BankAccount b = new BankAccount(); // will call the constructor BankAccount();
+					BankAccount b = new BankAccount("RudyIsGr8", 999999); // will call the constructor public BankAccount(String pw, double initBal);
+				/*
+		-Accessors - return variables within a class
+		-Mutators - change variables within a class
+		-Static methods vs instance methods
+			-Static methods perform operations for entire classes - effectively, they act as a namespace
+			-Static methods cannot invoke instane variables or instance methods (compiler will catch)
+	-Overloading: multiple methods with the same name
+		-Signature of the passed values (types, order, number of, etc) determines which one is actually used
+	-Formal parameters = the parameters (types and names) listed in the initial method declaration when defining the class
+	-Scope
+		-Variables are only visible / can be accessed within a certain scope
+		-Local variable is defined within a method
+		-Block is a piece of code enclosed in a {}
+		-ivars are always accessible
+	-within a given instance variable `this` can be used to denote itself (`self` in other languages)
+
+-Variables
+	-Private ivars are only accessable within a class*/
+		private static int employeeCount = 0;
+/*		-In AP CS, all ivars are private
+	-Static ivars do not change from instance to instance - memory of static ivars is only allocated once
+	-static *final* variables cannot be changed (constants)
+	-Some datatypes are primitive types - they are compared by value to value rather than by memory slot to memory slot
+		these are: doubles, ints, floats, chars, bools
+		-passing these types copies them, does not send a reference
+	-others are compared via their slots in memory
+		-just like in C / C++ / Objective - C
+		-passing these objects sends a reference - when you change passed objects you are changing the memory that the reference is pointing to - thus, you are changing every reference to the object, not just the passed value
+ 		-note that references ARE copied - but objects aren't
+
+Null:
+	-Represents an uninitialized reference to an object
+		-ie, */ BankAccount b; /* - needs a new and a constructor to be initialized
+		-null pointer / null reference
+	-NullPointerException - trying to call methods, get variables from a null reference
+*/

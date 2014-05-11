@@ -1,0 +1,92 @@
+// Object class
+// Every single class is a subclass of the Object class
+// Methods
+(new Object()).toString() // Returns a version of the object in string form
+	// Default for this is to print the name of the class + "@" + address in memory - SavingsAccount@fea485c4
+	// You can and should redefine it to whatever fits your wishes
+	public String toString() {
+		return <string containing description of the object>;
+	}
+
+(new Object()).equals(Object other) //retuns whether an instance of the object is equal to another instance of the same object
+// Return yes or no based on whether or not the two objects are equal (determined by you)
+	public boolean equals(Object other) {
+		return <some comparison>;
+	}
+	// If a == b then they have the same hashcode - see (new Object()).hashCode()
+
+
+// String class
+// Construction
+String s = "abc";
+String s = new String("abc");
+
+// Concatenation
+s = s + "def"; // s == "abcdef"
+// To concatenate strings you need to have at least one string, ie you can't do
+int x = 3, y = 4;
+String s =  x + y;
+
+// However if you have a string, implicit conversion will occur... (using order of operations ofc)
+String s = x * y + "foo"; // s == "12foo"
+// There is no implicit conversion for objects.
+
+// Initializing String objects
+String s = null;
+String s = new String();
+
+// String comparisons
+s.equals(s2); //returns true or false
+s.compareTo(s2); //if s is -, then s comes before s2 in teh dictionary... if s == 0, then they're the same string, if s is + then s comes after s2 in the dictionary
+
+// All digits precede all capitals, which precede all lowercase
+
+s.length() // returns length
+s.substring(int startIndex) //substring from position. before the first letter is position 0. StringIndexOutOfBoundsException if the startIndex
+//is larger than s.legnth() or smaller than 0.
+
+s.substring(int startIndex, int endIndex) //substring from position to position. same rules as the previous, except that if startIndex > endIndex then throws StringIndexOutOfBoundsException
+
+s.indexOf(String substr) //returns index just before the substr appears, ie foo in foobar = 0, bar = 3
+
+
+// Wrapper classes
+// Takes existing object or value of primitive type and wraps / boxes it in an object, and then provides a new set of methods for it
+// Can be used in java methods that require objects as parameters
+// can be used in container classes that require items to be objects
+// Allows:
+	// Construction of object from a single value
+	// Retrieval of primitive value
+// Java provides a few
+
+// INTEGERS
+Integer i = new Integer(int num); 
+//methods
+i.intValue() //value as an int
+i.compareTo(Object other) // compares Integer to another Integer - if less, 0 if same, 1 if greater than 
+i.equals(Object other) // returns true or false if Integer has the same value as another Integer
+//ClassCastException if other is not an Integer
+
+i.toString() // returns i as a string
+
+// Doubles
+Double d = new Double(double value); 
+
+d.doubleValue() //returns value as double
+d.compareTo(Object other) // if less -, if equal 0, if more +
+d.equals(Object other) // if equal true, if not false
+d.toString() // returns double in string form
+
+// Note: Doubles and Integers are immutable
+
+
+// Math class
+Math.abs() -> static int abs(int x) //returns abs of x (as an int)
+Math.abs() -> static double abs(double x) //returns abs of x (as an double)
+Math.pow() -> static double pow(double x, double exp) //returns x^exp
+Math.sqrt() -> static double sqrt(double x) //returns x^(1/2)
+Math.random() -> static double random() //returns random number defined by the interval [0, 1)
+
+//usage cases for random
+(int) ((Math.random() * (b - a)) + a) // returns random integer between [a, b), where a < b
+// add or subtract .5 to round rather than floor ((int) just floors)

@@ -26,6 +26,7 @@ public class SubClass extends SuperClass {
 // 		Use super(<params>) to call the superclass' constructor
 // 			This must be done in the first line of the constructor if it is done at all.
 //			If no constructor is provided then Java will automatically do the following:
+// super() is automatically called at the beginning if there is no super(<parameters>) to be found.
 
 public SubClass() {
 	super();
@@ -51,7 +52,9 @@ Student g = new GradStudent();
 	//A method that has been overridden in at least one subclass is said to be polymorphic
 // Static binding: occurs at compile time, compiler chooses which method is going to be run for overloaded method based on the signature of the method calle
 // Dynamic binding: java chooses which method to run during runtime - occurs for overriden methods. Determined by the object not the reference's type.
-
+// Note the difference between overriding and overloading
+// 		Overriding = subclasses with the same signatures, dealt with at run time
+// 		Overloading = methods with the same name but different signatures, dealt with at compile time
 // Type compatability
 // Downcasting:
 // 		At compile time, only nonprivate methods of a superclass can appear to the right of the dot operator when applied to a subclass.
@@ -198,10 +201,20 @@ public abstract class Shape implements Comparable {
 // Interface cannot provide implementations for anything, while abstract classes can
 // Interface cannot contain ivars, but abstract classes can.
 // Both interfaces and abstact classes can declare constants 
-
+// Variables declared in interfaces are implicitly defined to be static, final, and public
+// Methods declared are implicitly defined as abstract and public
 interface OlympicMedal {
-	static final String GOLD = "Gold";
-	static final String SILVER = "Silver";
-	static final String BRONZE = "Bronze";
+	public static final String GOLD = "Gold";
+	public static final String SILVER = "Silver";
+	public static final String BRONZE = "Bronze";
 }
 // Neither abstract nor interfaces can have instances made of themselves alone
+
+// Vocab to know
+// ==============
+// Polymorphism
+// Dynamic binding
+// Static binding
+// method overloading
+// method overriding
+// downcasting

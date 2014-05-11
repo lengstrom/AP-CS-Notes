@@ -65,6 +65,7 @@ Class declarations:
 					BankAccount b = new BankAccount("RudyIsGr8", 999999); // will call the constructor public BankAccount(String pw, double initBal);
 				/*
 		-Accessors - return variables within a class
+			-you can't read private variables from outside the class
 		-Mutators - change variables within a class
 		-Static methods vs instance methods
 			-Static methods cannot be overriden (see later on)

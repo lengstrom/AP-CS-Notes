@@ -54,6 +54,8 @@ Student g = new GradStudent();
 // Dynamic binding: java chooses which method to run during runtime - occurs for overriden methods. Determined by the object not the reference's type.
 // Note the difference between overriding and overloading
 // 		Overriding = subclasses with the same signatures, dealt with at run time
+//			Note that you can override private methods (and even make them public), but that you...
+// 			Can't override a public method to make it private. (You can still override it and keep it public)
 // 		Overloading = methods with the same name but different signatures, dealt with at compile time
 // Type compatability
 // Downcasting:
@@ -167,6 +169,7 @@ public interface Comparable {
 
 // Any class that implements this must provide a compareTo method that either returns -1 (if the object is less than the compared object),
 // 0 (if the two objects are the same), or 1 (if the object is greate rthan the compared object)
+// Also could just be 0, - number, or + numer (Does not have to be -1, 0, 1)
 // compares `this` with parameter object `obj`
 // If the two objects being compared are not type compatible, a ClassCastException is thrown by the method
 // Example of implementation
@@ -203,6 +206,9 @@ public abstract class Shape implements Comparable {
 // Both interfaces and abstact classes can declare constants 
 // Variables declared in interfaces are implicitly defined to be static, final, and public
 // Methods declared are implicitly defined as abstract and public
+// All methods in abstract classes and in interfaces are public
+// Interfaces and abstract classes use postpone choosing which subclass method to use until runtime. (neither is chosen at compile time)
+
 interface OlympicMedal {
 	public static final String GOLD = "Gold";
 	public static final String SILVER = "Silver";

@@ -13,6 +13,10 @@
 	public boolean equals(Object other) {
 		return <some comparison>;
 	}
+	//default is...
+	public boolean equals(Object other) {
+		return this == other; //checks reference
+	}
 	// If a == b then they have the same hashcode - see (new Object()).hashCode()
 
 

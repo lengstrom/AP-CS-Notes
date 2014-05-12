@@ -1,0 +1,44 @@
+// Arrays
+// Initialization
+
+ClassName[] arr = new ClassName[lengthOfArray];
+ClassName arr[] = new ClassName[lengthOfArray];
+
+arr.length // public final int that indicates the number of elements in the array
+
+// traversing arrays
+for (Object obj : arr) {
+	//do stuff
+	System.out.println(obj);
+}
+
+for (int i = 0; i < arr.length; i++) {
+	System.out.println(arr[i]); //do stuff
+}
+
+// parameters can include arrays. arrays are not copied though, as they are treated just like any other object.
+// default values:
+	// For integers / doubles / bools are 0 / 0 / false
+	// For objects: null
+
+
+// Array lists
+	// Can grow / shrink
+	// Last slot always list.size() - 1
+	// Shifting is automatic for insertions / deletions
+
+// Collections API 
+	// efficient
+	// insertion / deletion always supported
+	// Must have objects 
+		// Primitive types are more efficient with arrays
+// List <E> Interface
+boolean add(E obj) // Always return true. Appends to end of list.
+int size() // # of elements in the list
+E get(int index) // Gets object at the index `index`
+E set(int index, E element) // Replaces object at index `index` with eleemnt, returns previous object at the index
+E remove(int index) // Elements to the right of index are shifted down. Object at the index is removed.
+void add(int index, E elem) /sx/ add E to index
+
+// printing - automatic conversino to .toString()?
+// stuff involving casting...

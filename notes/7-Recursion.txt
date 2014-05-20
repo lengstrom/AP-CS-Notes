@@ -1,0 +1,9 @@
+// Recursive methods
+// Recursive method is a method that calls itself
+
+// Two distinct pairs
+	// Base case or termination that causes the method to end
+	// nonbase case whose actions move the algorithm towards the base case and thus termination
+
+// Tail recursion: no statements that follow the recursive call
+// Basically just do problems based on recursion. there's really not much you can do other than just get more intuition about them.

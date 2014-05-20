@@ -1,0 +1,160 @@
+//Classes in GridWorld
+Grid <<interface>>
+	Contains:
+		Location
+		Actor
+			Subclasses:
+				Flower
+				Rock
+				Bug
+					Contains: BoxBug
+				Critter
+					Contains: ChameleonCritter
+			Contains: Location
+
+AbstractGrid <<abstract>>
+	Is a Grid <<interface>>
+	Subclasses:
+		BoundedGrid
+		UnboundedGrid
+
+// Black box classes: Code not provided, but it is necessary to know their methods and constants
+	// Location
+	// Actor
+	// Rock
+	// Flower
+
+// Actors:
+	// Rock: does nothing
+	// Flower: Darkens its color
+	// Bug
+		// Moves forward when it can. Can move into empty space or onto a flower.
+		// Deposits flowers in all previous locations
+		// Flowers it deposits are removed from the Grid
+		// Bug cannot move if it is blocked in front by either another nonflower actor, or the edge of the grid
+		// When it is prevented from turning, it turns 45° to the right
+	// BoxBug
+		// Moves like a bug. 
+		// If it encounters no obstacles, it traces out a square of Flowers with a given side length.
+		// If it encounters an obstacle, it turns 90° (turns 45° * 2)
+	// Critter
+		// Gets list of adjacent neighboring actors
+		// "Processes" them by eating actors that are not Rocks or other Critters
+		// Movement: Randomly selects an empty neighboring location and moves there
+			// Done after processing
+			// Does not move if there are no open locations
+	// ChameleonCritter
+		// Gets list of adjacent neighbors, randomly picks one, and changes its color to it 
+		// Moves like a critter but changes direction to face new location before moving
+
+// Location class
+	// Encapsulates row / column values for any position in the grid
+	// Has constants for compass directions and turn angles
+	// Provides methods for determining relationships between locations and compassdirections
+
+	// 8 constants for compass directions
+		Location.NORTH == 0
+		Location.NORTHEAST == 45
+		Location.EAST == 90
+		Location.SOUTHEAST == 135
+		Location.SOUTH == 180
+		Location.SOUTHWEST == 225
+		Location.WEST == 270
+		Location.NORTHWEST == 315
+
+	// Common turn angles
+		Location.LEFT == -90
+		Location.RIGHT == 90
+		Location.HALF_LEFT == -45
+		Location.HALF_RIGHT == 45
+		Location.FULL_CIRCLE == 360
+		Location.HALF_CIRCLE == 180
+		Location.AHEAD == 0
+
+	// Methods
+		public Location(int r, int c) // Constructor. Row, Column
+		public int getRow()
+		public int getCol()
+		public Location getAdjacentLocation(int direction) // direction = location in the compass direction closest to `direction`
+		public int getDirectionToward(Location target) // nearest compass direction
+		public int hashCode() //gets hash code
+		public boolean equals(Object other) //are equal if they share row and column values
+		public int compareTo(Object other) // row major - that is, go from row to row and the one farthest along is greater
+
+// Actor Class
+	// Superclass for every creatuer or object that appears in the grid
+	// Has location, direction, color, and some mutators
+	// Methods
+		public Actor() // default constructor
+		public Color getColor();
+		public int getDirection()
+		public Location getLocation()
+
+		public Grid<Actor> getGrid(); // returns grid the actor is attached to
+		public void setColor(Color newColor) 
+		public void setDirection(int newDirection)
+		public void moveTo(Location newLocation) // actor has to be in a grid and the newLocation has to be valid in the grid
+		public void putSelfInGrid(Grid<Actor> gr, Location loc) //puts actor into a given grid "gr" at the position loc
+		public void removeSelfFromGrid() // removes actor from grid its attached to
+		public void act() // reverses direction of actor... often is overridden in subclasses
+		
+// Rock class
+	// Does nothing! just has a constructor that makes a black rock
+
+// Flower: does nothing except for darken its color
+	// Can initiate with a specific color
+	// Overriden act method darkens the flower by reducing the avlues of the rgb components of its flower by a constant factor
+
+/// FROM HERE ON OUT THE CODE IS GIVEN TO YOU IN THE HANDBOOK!
+
+// Bug Class
+	public Bug() // default constructor
+	public Bug(Color bugColor) //makes a bug with the specified color
+	public void act() //moves if it can, otherwise turns
+	public void turn() // turn bug 45° to the right w/o chaing location. adds Location.HALF_RIGHT
+	public boolean canMove() // if it can move = true, false otherwise 
+		// get bugs grid, if its null, return false
+		// get adjacent location right in front of the bug 
+			// if it is invalid, return false
+		// get the actor in front location, if the actor is flower or null (ie no actor there) return true, otherwise return fales
+	public void move() //moves bug forward, placing a flower in the previous location
+		// if bug's grid is null exit the message
+		// get bug's location
+		// get location right in front of bug
+		// if location is valid bug moves there (redundant because canMove() is called first)
+		// places flower that is the same color of the bug in the previous location
+
+// BoxBug class
+	public BoxBug(int length) // sideLength = specified length... initializes steps to 0
+	public void act() // actions..
+		// Tests whether bug is still in the process of making a side
+		// If this is true, and if the bug can move forwards, then the bug moves and steps is incremeted.
+		// if this is false, 
+
+// Critter
+// Gets list of neighboring actors
+// Process the actors
+// Get a list of possible locations to move to
+// select a location from the list
+// move there
+// Methods
+	public void act() // critter acts by getting a list of neighbors, processing them, getting a list of n=possible locations to move to seleciting a location, and then moving to the selected location
+	public arrayList<Actor> getActors() // Returns a list of adjacent neighboring actors
+	public void process actors(ArrayList<Actor> actors) // processes the actors. Critter eats all actors that aren;t rocks or other critters. iterates thru, if it is not a rock or critter it removes itself from the grid
+	public ArrayList<Location> getMoveLocations() // returns list of empty, valid, adjacent, neighboring locations for the next move
+		// Uses the grid method getEmptyAdjacentLocations
+	public Location selectMoveLocation(ArrayList<Location> locs) // selects the location for the next move from locsc, a list of valid locations
+		// if length of locs (n) is 0 return current location
+		// otherwise get a random int from 0 to n -1, and return the location specificed at that index in locs
+	public void makeMove(Location loc)
+
+// ChameleonCritter Class
+// Subclass of Critter
+// Gets tehe same list of actors as Critter, but insteado f eating them, it randomly selects one actor and changes its color to that of the selected actor
+// MOves like a critter except that it turns to face its new location before moving
+
+public void processActors(ArrayList<Actors> actors) // randomly select an adjacent neighbor and changes the color to that of the actor. does nothing if no neighbors.
+public void makeMove(Location loc) // moves like a regular Critter, but before it moves it turns to face its new location. to change direction, the setdirection method is used... parameter used for the call to setDirection is the 
+// direction from the chameleonCritter's current location to loc
+
+// use this: http://apcentral.collegeboard.com/apc/public/repository/ap_comp_sci_a_quick_reference.pdf

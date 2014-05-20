@@ -16,7 +16,7 @@
 // Sorted after n - 1 passes in an array of length n
 
 // Recursive sorts
-
+// Merge sort
 // Better for very long arrays
 // Essentially...
 	// If there is more than one element in the array
@@ -24,6 +24,7 @@
 	// Mergesort the left half
 	// Mergesort the right half
 	// Merge the two subarrays into a sorted array
+		// Note *subarrays* not separate arrays
 
 	// 1. Start with unsorted list of n elements
 	// 2. Recursive calls break list into n sublists, each of length 1. NOte these n arrays each containing just one element, are sorted
@@ -88,4 +89,4 @@ public Object binSearch(low, high, a, obj) {
 // Worst case: key is at the end of a subarray.
 	// How to find how many maximum tries until the worst case could be found:
 	// Take n, the number of elements in the array to be tested, and then round up to the next power of two
-	// then find log_2(POT) -> max tries	
+	// then find log_2(POT) -> max tries

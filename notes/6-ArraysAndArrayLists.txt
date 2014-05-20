@@ -33,12 +33,54 @@ for (int i = 0; i < arr.length; i++) {
 	// Must have objects 
 		// Primitive types are more efficient with arrays
 // List <E> Interface
+// Example <E> = type of objects contained in the list
+List<String> arList= new ArrayList<String>();
+
 boolean add(E obj) // Always return true. Appends to end of list.
 int size() // # of elements in the list
 E get(int index) // Gets object at the index `index`
 E set(int index, E element) // Replaces object at index `index` with eleemnt, returns previous object at the index
 E remove(int index) // Elements to the right of index are shifted down. Object at the index is removed.
 void add(int index, E elem) /sx/ add E to index
+iterator<E> iterator() //returns iterator that goes over the elements in a given array
+// List<E> interface
+	// Can only contain !!objects of one type
+	// type of objects are restricted at compile time
+	// Erasure: Checked @ compile time for correctness -> ClassCast exceptions
 
-// printing - automatic conversino to .toString()?
-// stuff involving casting...
+// ArrayList<E>
+// ArrayList() constructor generates an empty ArrayList<E>
+// Note IndexOutOfRange error for...
+	// Get, remove, set when:
+	index < 0 || index >= size()
+
+	//add
+	index < 0 || index > size()
+
+// Collections and iterators
+	// Iterator<E> Interface 
+	boolean hasNext() // True if there are more than 0 elements left to be examined
+	E next() // Returns next element in the iterator
+		// Can get a NoSuchELementException if no items remain
+	void remove() // delete the last element returned by next()
+		// IllegalStateException - can only remove one element for every next()
+			// Have to call next()!
+
+	// Example
+	ArrayList<String> aList = new ArrayList();
+	aList.add("Foobar!");
+	aList.add("Bar!");
+	aList.add("Foo!");
+	Iterator<String> aListIter = aList.iterator();
+	aListIter.next();
+	aListIter.remove();
+	while (aListIter.hasNext()) {
+		System.out.println(aListIter.next());
+	}
+	
+	// Bar!
+	// Foo!
+//2d arrays - if you want to get good with these (Not hard at all!) just do a few multiple choice questions :)
+int[][] = new int[3][3]; //3 x 3 array
+int[][] = {{},{},{}}; //3 x 3 array
+

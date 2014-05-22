@@ -54,7 +54,6 @@ Class declarations:
 	-Access specifier -> Which methods can call method
 		-Private = only self
 		-Public = any class
-		-Static = 
 	-Types of methods
 		-Constructors:
 			-Creates the object of the class

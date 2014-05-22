@@ -44,6 +44,7 @@ Analysis of specification -> Program design -> Implementation -> Testing and Deb
 
 - For each method, list all other classes that are needed to implement the method 
 	- These classes are called collaborators
+	- Do independent ones first
 	- Classes that do not depend on other classes are known to be "independent"
 - A *bottom up* approach is when individual classes are fully implemented and tested before being incorporated into the overall project
 	- Constructors, then methods, should be added and tested once at a time

@@ -60,7 +60,7 @@ Student g = new GradStudent();
 // Type compatability
 // Downcasting:
 // 		At compile time, only nonprivate methods of a superclass can appear to the right of the dot operator when applied to a subclass.
-// 		Thus, you have to type the object. For example:
+// 		Type the object. For example:
 
 Student s = new GradStudent();
 GradStudent g = new GradStudent();
